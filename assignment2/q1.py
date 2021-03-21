@@ -1,5 +1,6 @@
 import sqlite3
 import pandas as pd
+#%matplotlib inline
 import matplotlib.pyplot as plt
 
 db_filename = 'readonly/dinofunworld.db'

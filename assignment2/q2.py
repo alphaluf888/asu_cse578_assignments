@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 db_filename = 'readonly/dinofunworld.db'
 conn = sqlite3.connect(db_filename)
 c = conn.cursor()
-c.execute("SELECT a.Name, count(c.visitorID) \
+c.execute("SELECT a.AttractionID, count(c.visitorID) \
 FROM attraction as a, checkin c \
 WHERE \
 a.AttractionID = c.attraction \
@@ -15,7 +15,7 @@ GROUP BY a.AttractionID \
 ")
 foodStallsVisitsResult = c.fetchall()
 print(foodStallsVisitsResult)
-foodStallsVisitsDataFrame = pd.DataFrame.from_records(foodStallsVisitsResult, columns=['food_name', 'visits_count'])
+foodStallsVisitsDataFrame = pd.DataFrame.from_records(foodStallsVisitsResult, columns=['food_id', 'visits_count'])
 c.close()
-plt.bar(range(len(foodStallsVisitsDataFrame['visits_count'])), foodStallsVisitsDataFrame['visits_count'])
+plt.bar(range(len(foodStallsVisitsDataFrame['visits_count'])), foodStallsVisitsDataFrame['visits_count'], tick_label=foodStallsVisitsDataFrame['food_id'])
 plt.show()

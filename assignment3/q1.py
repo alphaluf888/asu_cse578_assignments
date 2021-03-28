@@ -28,4 +28,5 @@ for i in range(5):
                 rowDisSimilarityDict[visitorIds[j]] = counts[1]
     disSimilarityMatrixDict[visitorIds[i]] = rowDisSimilarityDict
 
+c.close()
 print(disSimilarityMatrixDict)
